@@ -31,3 +31,16 @@ build/
 
 ### VS Code ###
 .vscode/
+
+
+### env ###
+.env
+env.properties
+
+<<<<<<< HEAD
+### yml ###
+=======
+### files ###
+>>>>>>> marco
+.yml
+application.yml
