@@ -7,10 +7,12 @@ import com.exorlive.stepcounter.user.IUserModelDbRepository;
 import com.exorlive.stepcounter.user.UserModel;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 
 import java.util.List;
 
 @Service
+@Transactional
 @RequiredArgsConstructor
 public class SessionService {
 
@@ -24,7 +26,7 @@ public class SessionService {
                 .findById(id)
                 .orElseThrow(() -> new CustomException(ErrorCode.SESSION_NOT_FOUND));
     }
-
+    @Transactional
     public Session addSession(NewSessionDTO sessionDTO) {
         UserModel user =userModelDbRepository
                 .findByUserEmail(sessionDTO.email())

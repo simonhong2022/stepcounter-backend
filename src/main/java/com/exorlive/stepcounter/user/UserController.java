@@ -24,9 +24,9 @@ public class UserController {
         return ResponseEntity.ok(userService.getAllUsers());
     }
 
-    @GetMapping("{id}")
-    public ResponseEntity<UserModel> getUserById(@PathVariable @NotEmpty String id) {
-        return ResponseEntity.ok(userService.getUserById(id));
+    @GetMapping("{email}")
+    public ResponseEntity<UserModel> getUserByEmail(@PathVariable @NotEmpty String email) {
+        return ResponseEntity.ok(userService.getUserByEmail(email));
     }
 
     @PostMapping
@@ -36,9 +36,9 @@ public class UserController {
         return ResponseEntity.created(location).body(createdUser);
     }
 
-    @PatchMapping("{id}")
-    public ResponseEntity<UserModel> updateUser(@PathVariable @NotEmpty String id, @RequestBody @NotNull NewUserDTO updateUserDTO) {
-        UserModel updateUser = userService.updateUser(id, updateUserDTO);
+    @PatchMapping("{email}")
+    public ResponseEntity<UserModel> updateUser(@PathVariable @NotEmpty String email, @RequestBody @NotNull NewUserDTO updateUserDTO) {
+        UserModel updateUser = userService.updateUser(email, updateUserDTO);
         return ResponseEntity.accepted().body(updateUser);
     }
 

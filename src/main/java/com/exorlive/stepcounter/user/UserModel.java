@@ -4,12 +4,11 @@ import com.exorlive.stepcounter.body.Body;
 import com.exorlive.stepcounter.session.Session;
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import jakarta.persistence.*;
+import jakarta.validation.constraints.NotNull;
 import lombok.*;
-import org.springframework.data.relational.core.sql.In;
 
 import java.util.ArrayList;
 import java.util.List;
-import java.util.UUID;
 
 @Entity
 @Getter
@@ -26,6 +25,7 @@ public class UserModel {
     @Column(name = "user_name")
     private String userName;
     @Column(name = "user_email")
+    @NotNull
     private String userEmail;
     private Float height;
     @Column(name = "expected_weight")
@@ -48,7 +48,7 @@ public class UserModel {
     @OneToMany(mappedBy = "user", cascade = CascadeType.REMOVE, orphanRemoval = true)
     private List<Session> sessionList;
 
-    public UserModel(String userName, String userEmail, Float height, Float expectedWeight, Integer age, String sex, String mode, Integer activityGoal, Double durationGoal, List<String> sessionRecommendation) {
+    public UserModel(String userName, @NotNull String userEmail, Float height, Float expectedWeight, Integer age, String sex, String mode, Integer activityGoal, Double durationGoal, List<String> sessionRecommendation) {
         this.userName = userName;
         this.userEmail = userEmail;
         this.height = height;

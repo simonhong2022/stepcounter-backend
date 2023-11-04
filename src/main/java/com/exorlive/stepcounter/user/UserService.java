@@ -39,9 +39,9 @@ public class UserService {
                 userDTO.durationGoal(), userDTO.recommendations()));
     }
 
-    public UserModel updateUser(String id, NewUserDTO updateUserDTO) {
+    public UserModel updateUser(String email, NewUserDTO updateUserDTO) {
         UserModel storedUser = userModelDbRepository
-                .findById(id)
+                .findByUserEmail(email)
                 .orElseThrow(() -> new CustomException(ErrorCode.USER_NOT_FOUND));
         if (updateUserDTO.userName() != null && !updateUserDTO.userName().isEmpty()) {
             storedUser.setUserName(updateUserDTO.userName());
