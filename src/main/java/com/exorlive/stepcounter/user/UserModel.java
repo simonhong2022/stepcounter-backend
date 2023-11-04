@@ -17,7 +17,7 @@ import java.util.UUID;
 @ToString
 @NoArgsConstructor
 @AllArgsConstructor
-@Table(name = "user")
+@Table(name = "user_model")
 public class UserModel {
     @Id
     @GeneratedValue(strategy = GenerationType.UUID)

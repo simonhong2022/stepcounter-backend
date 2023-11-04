@@ -19,29 +19,26 @@ public class Session {
     @GeneratedValue(strategy = GenerationType.UUID)
     @Column(name = "session_id")
     private UUID sessionId;
-    @Column(name = "date_millisecond")
-    private String dateMillis;
     @Column(name = "activity")
     private String activity;
     @Column(name = "activity_type")
-    private String activityType;
+    private Integer activityType;
     private String description;
     @Column(name = "start_time")
     private String startTime;
     @Column(name = "end_time")
     private String endTime;
     @Column(name = "calorie_consumed")
-    private String calorieConsumed;
+    private Float calorieConsumed;
     @Column(name = "avg_heart_rate")
-    private String avgHeartRate;
+    private Integer avgHeartRate;
 
     @JsonBackReference
     @ManyToOne
     @JoinColumn(name = "user_id", nullable = false)
     private UserModel user;
 
-    public Session(String dateMillis, String activity, String activityType, String description, String startTime, String endTime, String calorieConsumed, String avgHeartRate, UserModel user) {
-        this.dateMillis = dateMillis;
+    public Session(String activity, Integer activityType, String description, String startTime, String endTime, Float calorieConsumed, Integer avgHeartRate, UserModel user) {
         this.activity = activity;
         this.activityType = activityType;
         this.description = description;

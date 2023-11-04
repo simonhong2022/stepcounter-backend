@@ -5,7 +5,6 @@ import com.exorlive.stepcounter.exception.ErrorCode;
 import com.exorlive.stepcounter.model.NewUserDTO;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
-import org.springframework.transaction.annotation.Transactional;
 
 import java.util.List;
 @Service
@@ -40,5 +39,44 @@ public class UserService {
                 userDTO.durationGoal(), userDTO.recommendations()));
     }
 
+    public UserModel updateUser(String id, NewUserDTO updateUserDTO) {
+        UserModel storedUser = userModelDbRepository
+                .findById(id)
+                .orElseThrow(() -> new CustomException(ErrorCode.USER_NOT_FOUND));
+        if (updateUserDTO.userName() != null && !updateUserDTO.userName().isEmpty()) {
+            storedUser.setUserName(updateUserDTO.userName());
+        }
+        if (updateUserDTO.userEmail() != null && !updateUserDTO.userEmail().isEmpty()) {
+            storedUser.setUserEmail(updateUserDTO.userEmail());
+        }
+        if (updateUserDTO.sex() != null && !updateUserDTO.sex().isEmpty()) {
+            storedUser.setSex(updateUserDTO.sex());
+        }
+        if (updateUserDTO.mode() != null && !updateUserDTO.mode().isEmpty()) {
+            storedUser.setMode(updateUserDTO.mode());
+        }
+        if (updateUserDTO.expectedWeight() != null && updateUserDTO.expectedWeight() >= 0) {
+            storedUser.setExpectedWeight(updateUserDTO.expectedWeight());
+        }
+        if (updateUserDTO.height() != null && updateUserDTO.height() >= 0) {
+            storedUser.setHeight(updateUserDTO.height());
+        }
+        if (updateUserDTO.age() != null && updateUserDTO.age() >= 0) {
+            storedUser.setAge(updateUserDTO.age());
+        }
+        if (updateUserDTO.activityGoal() != null && updateUserDTO.activityGoal() >= 0) {
+            storedUser.setActivityGoal(updateUserDTO.activityGoal());
+        }
+        if (updateUserDTO.durationGoal() != null && updateUserDTO.durationGoal() >= 0) {
+            storedUser.setDurationGoal(updateUserDTO.durationGoal());
+        }
+
+        return userModelDbRepository.save(storedUser);
+    }
+
+    public void deleteUser(String id) {
+        userModelDbRepository.findById(id).orElseThrow(()-> new CustomException(ErrorCode.USER_NOT_FOUND));
+        userModelDbRepository.deleteById(id);
+    }
 
 }
