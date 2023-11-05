@@ -79,4 +79,9 @@ public class UserService {
         userModelDbRepository.deleteById(id);
     }
 
+    public void deleteUserByEmail(String email) {
+        UserModel userModel = userModelDbRepository.findByUserEmail(email).orElseThrow(()-> new CustomException(ErrorCode.USER_NOT_FOUND));
+        userModelDbRepository.deleteById(userModel.getUserId());
+    }
+
 }

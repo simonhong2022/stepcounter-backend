@@ -1,0 +1,7 @@
+server:
+  port : 8080
+
+  datasource:
+    url: jdbc:postgresql://localhost:5432/stepcounter #${PSQL_DB}
+    username: postgres #${PSQL_USER}
+    password: postgres #${PSQL_PASSWORD}
