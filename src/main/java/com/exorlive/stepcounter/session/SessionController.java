@@ -14,7 +14,7 @@ import java.util.List;
 @RestController
 @RequiredArgsConstructor
 @RequestMapping("api/sessions")
-@CrossOrigin(origins = {"https://stepcounter.vercel.app", "http://localhost:3000"})
+@CrossOrigin(origins = {"https://activitycounter.vercel.app/", "http://localhost:3000"})
 public class SessionController {
 
     private final SessionService sessionService;

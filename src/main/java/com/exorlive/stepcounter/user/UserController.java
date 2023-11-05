@@ -14,7 +14,7 @@ import java.util.List;
 @RestController
 @RequiredArgsConstructor
 @RequestMapping("api/users")
-@CrossOrigin(origins = {"https://stepcounter.vercel.app", "http://localhost:3000"})
+@CrossOrigin(origins = {"https://activitycounter.vercel.app/", "http://localhost:3000"})
 public class UserController {
 
     private final UserService userService;
