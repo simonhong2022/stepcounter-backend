@@ -36,12 +36,3 @@ build/
 ### env ###
 .env
 env.properties
-
-<<<<<<< HEAD
-### yml ###
-=======
-### files ###
->>>>>>> marco
-.yml
-application.yml
-application-test.yml
